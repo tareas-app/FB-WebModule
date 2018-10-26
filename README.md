@@ -1,6 +1,7 @@
 
 # Firebase Based WebModule
-Frameworkds:
+Frameworks:
+
 Bootstrap
 
 jQuery
