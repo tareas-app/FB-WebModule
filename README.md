@@ -1,5 +1,5 @@
 
-# Firebase based webmodule
+# Firebase Based WebModule
 Frameworkds:
 Bootstrap
 jQuery
