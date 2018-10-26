@@ -1,0 +1,169 @@
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="Shelter,shelters near me,homeless shelters,local shelter puppies,rescue shelters,puppies for adoption near me,mobiel app,shelter app,emergency shelter,shelterpups,family shelters,asiel,dierenasiel,asielhonden,hondenasiel,hond adopteren,asieldieren,kittens asiel,adoptie honden,kattenasiel,mopshond,katten asiel,hond uit asiel,
+    dierenasiel honden,asiel kittens,aanbod asielhonden,pups,puppies zoeken">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Signup to join Petter and bring families and animals together">
+    <meta name="author" content="Petter">
+
+    <title>Vereniging Toevoegen - Tareas</title>
+
+    <!-- Custom fonts for this website -->
+    <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+
+    <!-- Custom styles for this website -->
+    <script src="https://www.gstatic.com/firebasejs/5.0.1/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.0.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.0.1/firebase-firestore.js"></script>
+    <!-- Bootstrap Core CSS -->
+    <link href="bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <!-- Sign up -->
+      <div class="container">
+        <div class="row align-items-center well">
+          <div class="col-lg-12 card">
+            <div class="card-body">
+              <form id="signupform" method="post"  action="/addclub" >
+
+                <h3>Vereniging Toevoegen</h3><br>
+                <div class="form-group">
+                  <label class="grayish" for="exampleInputEmail1">Naam</label>
+                  <input type="text" class="form-control" id="v_name" name="v_name" aria-describedby="" placeholder="Naam van de vereniging" required>
+                </div>
+                <!-- <div class="form-group">
+                  <label class="grayish" for="exampleInputEmail1">LAST NAME</label>
+                  <input type="text" class="form-control" id="v_naam" name="uslastname" aria-describedby="" placeholder="Last name" required>
+                </div> -->
+                <div class="form-group">
+                    <label class="grayish" for="exampleInputEmail1">Adres</label>
+                    <input type="text" class="form-control" id="v_address" name="v_address" aria-describedby="emailHelp" placeholder="address" required>
+                  </div>
+                  <div class="form-group">
+                    <label class="grayish" for="exampleInputEmail1">Stad</label>
+                    <input type="text" class="form-control" id="v_city" name="v_city" aria-describedby="emailHelp" placeholder="city" required>
+                  </div>
+                  <div class="form-group">
+                    <label class="grayish" for="exampleInputEmail1">Postcode</label>
+                    <input type="text" class="form-control" id="v_postalcode" name="v_postalcode" aria-describedby="emailHelp" placeholder="Postcode" required>
+                  </div>
+                <div class="form-group">
+                  <label class="grayish" for="exampleInputEmail1">Email</label>
+                  <input type="email" class="form-control" id="v_email" name="v_email" aria-describedby="" placeholder="Enter email" required>
+                </div>
+                <div class="form-group">
+                    <label class="grayish" for="exampleInputEmail1">Telefoon nummer</label>
+                    <input type="tel" class="form-control" id="v_phone_number" name="v_phone_number" aria-describedby="emailHelp" placeholder="+31612345678"  required>
+                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                  </div>
+                <div class="form-group">
+                  <label class="grayish" for="exampleInputPassword1">Wachtwoord</label>
+                  <div id="passerror"> </div><br>
+                  <input type="password" class="form-control" id="v_password" name="v_password" placeholder="Wachtwoord" required>
+                </div>
+                <div class="form-group">
+                  <label class="grayish" id="uspassword2Label" for="exampleInputPassword1">Bevestig wachtwoord</label>
+                  <div id="passerror2"> </div><br>
+                  <input type="password" class="form-control" id="v_password2" name="v_password2" placeholder="Bevestig wachtwoord" required>
+                </div>
+                <br>
+
+                <div class="form-check">
+                  <input type="checkbox" class="form-check-input" id="termcheck">
+                  <label class="form-check-label grayish" for="exampleCheck1"><small>Door op Aanmelden te klikken, gaat u akkoord met onze<a class="grayish" href="#"> Privacybeleid </a> en de <a class="grayish" href="#">Servicevoorwaarden</a></small></label>
+                </div>
+
+                
+                <div id="error">
+
+                </div><br>
+                <div class="float-right">
+                  <button id="btn_signup" value="Submit" type="submit" class="btn-rounded btn btn-default btn-outline" disabled>Sign Up</button>
+                  <br><br><br>
+                  <div class="loader" id="loader"></div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <br><br><br><br>
+      <!-- Footer -->
+        <footer class="footer text-center"> 2018 &copy; Tareas </footer>
+
+    <!-- jQuery -->
+    <script src="../plugins/bower_components/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="bootstrap/dist/js/bootstrap.min.js"></script>
+    <script>
+        $('#loader').hide();
+        $("#termcheck").click(function() {
+            $("#btn_signup").attr("disabled", !this.checked);
+        });
+    
+        $( "#v_password" ).keyup(function() {
+        var pass = $('#v_password').val();
+
+            if (pass.length <= 6)
+            {
+            $("#passerror").text("  wachtwoord is te kort..");
+            $("#passerror").css("color", "red");
+            }
+            else {
+            $("#passerror").text("");
+            }
+        });
+      
+        $( "#v_password2" ).keyup(function() {
+        var id1 = $('#v_password').val();
+        var id2 = $('#v_password2').val();
+        if (id1 == id2 && id1.length > 5) {
+                $("#passerror2").text("  Wachtwoorden komen overeen!");
+                $("#passerror2").css("color", "gray");
+            }
+            else
+            {
+            if (id2.length > 3)
+            {
+                $("#passerror2").text("  wachtwoorden komen niet overeen..");
+                $("#passerror2").css("color", "red");
+            }
+            else {
+                $("#passerror2").text("");
+            }
+            }
+        });
+
+        //Form submit event -> use for form validation, set value
+        $('#signupform').submit(function() {
+        var id1 = $('#v_password').val();
+        var id2 = $('#v_password2').val();
+    
+        if(id1.length <= 6 || id2.length <= 6)
+        {
+            return false;
+        }
+    
+        if (id1 == id2) {
+            $('#loader').show();
+            return true;
+        }
+        else
+        {
+            alert('Foutmelding, wachtwoorden komen niet overeen');
+            return false;
+        }
+    
+        return false;
+    });
+    </script>
+
+  </body>
+
+</html>

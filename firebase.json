@@ -1,0 +1,24 @@
+{
+  "hosting": {
+    "public": "public",
+    "rewrites": [
+        {
+        "source": "/addmember",
+        "function": "app"
+        },
+        {
+        "source": "/addtask",
+        "function": "app"
+        },
+        {
+        "source": "/addclub",
+        "function": "app"
+        }
+      ],
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}

@@ -1,0 +1,8 @@
+{
+    "name": "tareas-app",
+    "version": "0.0.1",
+    "dependencies": {
+        "angular-bootstrap": "latest",
+        "angular-ui-calendar": "latest"
+    }
+}

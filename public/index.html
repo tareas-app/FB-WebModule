@@ -1,0 +1,54 @@
+<html ng-app="TareasApp" ng-controller="TareasCtrlLogin">
+    <head>
+        <link href="bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="css/login.css">
+        
+        <!-- AngularJS -->
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.2/angular.min.js"></script>
+
+        <!-- AngularJS UI Router -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.20/angular-ui-router.js"></script>
+
+        <!-- Firebase -->
+        <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase.js"></script>
+
+        <!-- AngularFire -->
+        <script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
+
+        <!-- Angular-md5 -->
+        <script src="js/md5.min.js"></script>
+
+        <!-- App -->
+        <script src="js/authentication.js"></script>
+    </head>
+    <body id="LoginForm">
+        <div class="container">
+            <h1 class="form-heading">Tareas</h1>
+            <div class="login-form">
+                <div class="main-div">
+                    <div class="panel">
+                        <h2>Login</h2>
+                        <p>Voer uw e-mailadres en wachtwoord in</p>
+                    </div>
+                    <form id="Login">
+                        <div class="form-group">
+                            <input type="email" class="form-control" id="inputEmail" ng-model="user.email" placeholder="Email">
+                        </div>
+
+                        <div class="form-group">
+                            <input type="password" class="form-control" id="inputPassword" ng-model="user.password" placeholder="Wachtwoord">
+                        </div>
+                        <!-- TODO: Reset password page -->
+                        <!-- <div class="forgot">
+                            <a href="reset.html">Forgot password?</a>
+                        </div> -->
+                        <button type="submit" ng-click="loginuser(user)" class="btn btn-primary">Login</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+    <script src="../plugins/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bootstrap/dist/js/bootstrap.min.js"></script>
+    </body>
+</html>

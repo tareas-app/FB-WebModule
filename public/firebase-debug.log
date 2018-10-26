@@ -1,0 +1,32 @@
+[debug] [2018-09-14T08:52:55.061Z] ----------------------------------------------------------------------
+[debug] [2018-09-14T08:52:55.064Z] Command:       /usr/local/bin/node /usr/local/bin/firebase serve --only hosting,functions
+[debug] [2018-09-14T08:52:55.064Z] CLI Version:   4.2.1
+[debug] [2018-09-14T08:52:55.064Z] Platform:      darwin
+[debug] [2018-09-14T08:52:55.064Z] Node Version:  v8.11.2
+[debug] [2018-09-14T08:52:55.065Z] Time:          Fri Sep 14 2018 10:52:55 GMT+0200 (CEST)
+[debug] [2018-09-14T08:52:55.065Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-09-14T08:52:55.077Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-09-14T08:52:55.077Z] > authorizing via signed-in user
+[debug] [2018-09-14T08:52:55.079Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/tareas-d98b3  
+ 
+[debug] [2018-09-14T08:52:55.845Z] <<< HTTP RESPONSE 200
+[debug] [2018-09-14T08:52:55.846Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/tareas-d98b3  
+ 
+[debug] [2018-09-14T08:52:56.621Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/Users/michaelg/Dropbox/Tareas/CodeBase/WebModule'...
+[info] 
+[info] i  functions: Preparing to emulate functions.
+[debug] [2018-09-14T08:52:57.421Z] Fetching environment
+[debug] [2018-09-14T08:52:57.423Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/740957850942:getServerAppConfig  
+ 
+[debug] [2018-09-14T08:52:57.423Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/740957850942/clients/_:getWebAppConfig  
+ 
+[debug] [2018-09-14T08:52:57.659Z] <<< HTTP RESPONSE 200
+[debug] [2018-09-14T08:52:57.660Z] Starting @google-cloud/functions-emulator
+[debug] [2018-09-14T08:52:57.750Z] <<< HTTP RESPONSE 200
+[info] i  hosting[tareas-d98b3]: Serving hosting files from: public
+[info] ✔  hosting[tareas-d98b3]: Local server: http://localhost:5000
+[debug] [2018-09-14T08:52:59.218Z] Parsing function triggers
+[info] ✔  functions: app: http://localhost:5001/tareas-d98b3/us-central1/app

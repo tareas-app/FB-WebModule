@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="TareasApp" ng-controller="TareasCtrlPlanner">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" type="image/png" sizes="16x16" href="../plugins/images/favicon.png">
+    <title>Planner | Tareas</title>
+    
+    <!-- Bootstrap Core CSS -->
+    <link href="bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Menu CSS -->
+    <link href="../plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="bower_components/angular-bootstrap/ui-bootstrap-csp.css">
+    <!-- animation CSS -->
+    <link href="css/animate.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/extrastyles.css" rel="stylesheet">
+    <!-- color CSS -->
+    <link href="css/colors/default.css" id="theme" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- JS -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+
+    <!-- AngularJS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.2/angular.js"></script>
+
+    <!-- AngularJS UI Router -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.20/angular-ui-router.js"></script>
+
+    <!-- Calendar -->
+    <link rel="stylesheet" href="bower_components/fullcalendar/dist/fullcalendar.css"/>
+    <script type="text/javascript" src="bower_components/moment/min/moment.min.js"></script>
+    <script type="text/javascript" src="bower_components/angular-ui-calendar/src/calendar.js"></script>
+    <script type="text/javascript" src="bower_components/fullcalendar/dist/fullcalendar.min.js"></script>
+    <script type="text/javascript" src="bower_components/fullcalendar/dist/gcal.js"></script>
+    <script type="text/javascript" src="bower_components/angular-bootstrap/ui-bootstrap.js"></script>
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase.js"></script>
+
+    <!-- AngularFire -->
+    <script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
+
+    <!-- Angular-md5 -->
+    <script src="js/md5.min.js"></script>
+
+    <!-- App -->
+    <script src="js/planner.js"></script>
+</head>
+
+<body class="fix-header">
+    <!-- ============================================================== -->
+    <!-- Preloader -->
+    <!-- ============================================================== -->
+    <div class="preloader">
+        <svg class="circular" viewBox="25 25 50 50">
+            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
+        </svg>
+    </div>
+    <!-- ============================================================== -->
+    <!-- Wrapper -->
+    <!-- ============================================================== -->
+    <div id="wrapper">
+        <!-- ============================================================== -->
+        <!-- Topbar header - style you can find in pages.scss -->
+        <!-- ============================================================== -->
+        <nav class="navbar navbar-default navbar-static-top m-b-0">
+            <div class="navbar-header">
+                <div class="top-left-part">
+                    <!-- Logo -->
+                    <a class="logo" href="index.html">
+                        <!-- Logo icon image, you can use font-icon also --><b>
+                        <!--This is dark logo icon--><img src="../plugins/images/admin-logo.png" alt="home" class="dark-logo" /><!--This is light logo icon--><img src="../plugins/images/admin-logo-dark.png" alt="home" class="light-logo" />
+                     </b>
+                        <!-- Logo text image you can use text also --><span class="hidden-xs">
+                        <!--This is dark logo text--><img src="../plugins/images/admin-text.png" alt="home" class="dark-logo" /><!--This is light logo text--><img src="../plugins/images/admin-text-dark.png" alt="home" class="light-logo" />
+                     </span> </a>
+                </div>
+                <!-- /Logo -->
+                <ul class="nav navbar-top-links navbar-right pull-right">
+                    <li>
+                        <a class="profile-pic" href="#" id="loggedInuserString"> <img src="../plugins/images/users/varun.jpg" alt="user-img" width="36" class="img-circle"><b class="hidden-xs">{{LoggedInUser}}</b></a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-header -->
+            <!-- /.navbar-top-links -->
+            <!-- /.navbar-static-side -->
+        </nav>
+        <!-- End Top Navigation -->
+        
+        <!-- ============================================================== -->
+        <!-- Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+        <div class="navbar-default sidebar" role="navigation">
+            <div class="sidebar-nav slimscrollsidebar">
+                <div class="sidebar-head">
+                    <h3><span class="fa-fw open-close"><i class="ti-close ti-menu"></i></span> <span class="hide-menu">Navigation</span></h3>
+                </div>
+                <ul class="nav" id="side-menu">
+                    <li style="padding: 70px 0 0;">
+                        <a href="home.html" class="waves-effect"><i class="fa fa-clock-o fa-fw" aria-hidden="true"></i>Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="members.html" class="waves-effect"><i class="fa fa-user fa-fw" aria-hidden="true"></i>Leden</a>
+                    </li>
+                    <li>
+                        <a href="tasks.html" class="waves-effect"><i class="fa fa-list-ol fa-fw" aria-hidden="true"></i>Taken</a>
+                    </li>
+                    <li>
+                        <a href="planner.html" class="waves-effect"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i>Planner</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+         
+        <!-- ============================================================== -->
+        <!-- End Left Sidebar -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Page Content -->
+        <!-- ============================================================== -->
+
+        <div id="page-wrapper">
+            <div class="container-fluid">
+                <div class="row bg-title">
+                    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                        <h4 class="page-title">Basic Table</h4> </div>
+                    <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+                        <ol class="breadcrumb">
+                            <li><a href="#" class="active" data-toggle="modal" data-target="#assignTaskModal">Taak inplannen</a></li>
+                            <li><a href="#" ng-click="visualiseAppointments()">refresh</a></li>
+                        </ol>
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+                <!-- /row -->
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="white-box">
+
+                            <!-- Calendar -->
+                            <div ui-calendar="uiConfig.calendar" ng-model="eventSources"></div>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.container-fluid -->
+            <footer class="footer text-center"> 2018 &copy; Tareas </footer>
+        </div>
+        <!-- /#page-wrapper -->
+
+
+
+        <!-- Add Task modal -->
+        <!-- Modal -->
+        <div class="modal fade" id="assignTaskModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+            <form>
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Taak inplannen</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <div class="modal-body">
+                        <div class="form-group">
+                            <div class="form-group">
+                                <label for="exampleFormControlSelect1">Taak</label>
+                                <!-- <select ng-model="PlannedTask.selectedTask" class="form-control" id="taskSelect">
+                                  <option ng-repeat="x in tasks">{{x.title}}: {{x.description}}</option>
+                                </select> -->
+                                <select ng-model="selectedTask" class="form-control" id="taskSelect" ng-options="x.description for x in tasks">
+                                </select>
+                              </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="">Uitvoerder(s)</label>
+                            <input class="btn btn-secondary pull-right" type="button" value="Lid toevoegen" ng-click="searchMemberToAddTask()">
+                            <select ng-model="PlannedTask.executers"  multiple disabled="disabled" class="form-control" id="exampleFormControlSelect2">
+                                <option ng-repeat="x in membersperformingtask">{{x.first_name}} {{x.last_name}} - ({{x.email}})</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="">Datum</label>
+                            <input type="date" ng-model="PlannedTask.deadline" class="form-control" id="TaskDeadline" placeholder="DD/MM/JJJJ" required>
+                        </div>
+                        <!-- <div class="form-group">
+                            <label for="">Van</label>
+                            <input type="time" ng-model="PlannedTask.deadlineStartTime" class="form-control" id="TaskDeadlineStartTime" placeholder="DD/MM/JJJJ" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="">Tot</label>
+                            <input type="time" ng-model="PlannedTask.deadlineEndTime" class="form-control" id="TaskDeadlineEndTime" placeholder="DD/MM/JJJJ" required>
+                        </div> -->
+
+                        <label for="">Van</label>
+                        <div class="input-group registration-date-time ">
+                            <span class="input-group-addon" ><span class="glyphicon glyphicon-time" aria-hidden="true"></span></span>
+                                <select type="text" class="form-control" ng-model="PlannedTask.deadlineStartTimeHours" id="deadlineStartTimeHours" name="deadlineStartTimeHours">
+                                      <option value="7">7 u</option>
+                                      <option value="8">8 u</option>
+                                      <option value="9">9 u</option>
+                                      <option value="10">10 u</option>
+                                      <option value="11">11 u</option>
+                                      <option value="12">12 u</option>
+                                      <option value="13">13 u</option>
+                                      <option value="14">14 u</option>
+                                      <option value="15">15 u</option>
+                                      <option value="16">16 u</option>
+                                      <option value="17">17 u</option>
+                                      <option value="18">18 u</option>
+                                      <option value="19">19 u</option>
+                                  </select>
+                            <span class="input-group-addon" ><span class="glyphicon glyphicon-time" aria-hidden="true"></span></span>
+                                <select type="text" class="form-control" ng-model="PlannedTask.deadlineStartTimeMins" id="deadlineStartTimeMins" name="deadlineStartTimeMins">
+                                      <option value="00">00 min</option>
+                                      <option value="15">15 min</option>
+                                      <option value="30">30 min</option>
+                                      <option value="45">45 min</option>
+                                  </select> 
+                        </div>
+<br>
+                        <label for="">Tot</label>
+                        <div class="input-group registration-date-time ">
+                            <span class="input-group-addon" ><span class="glyphicon glyphicon-time" aria-hidden="true"></span></span>
+                                <select type="text" class="form-control" ng-model="PlannedTask.deadlineEndTimeHours" id="deadlineEndTimeHours" name="deadlineEndTimeHours">
+                                      <option value="7">7 u</option>
+                                      <option value="8">8 u</option>
+                                      <option value="9">9 u</option>
+                                      <option value="10">10 u</option>
+                                      <option value="11">11 u</option>
+                                      <option value="12">12 u</option>
+                                      <option value="13">13 u</option>
+                                      <option value="14">14 u</option>
+                                      <option value="15">15 u</option>
+                                      <option value="16">16 u</option>
+                                      <option value="17">17 u</option>
+                                      <option value="18">18 u</option>
+                                      <option value="19">19 u</option>
+                                  </select>
+                            <span class="input-group-addon" ><span class="glyphicon glyphicon-time" aria-hidden="true"></span></span>
+                                <select type="text" class="form-control" ng-model="PlannedTask.deadlineEndTimeMins" id="deadlineEndTimeMins" name="deadlineEndTimeMins">
+                                      <option value="00">00 min</option>
+                                      <option value="15">15 min</option>
+                                      <option value="30">30 min</option>
+                                      <option value="45">45 min</option>
+                                  </select> 
+                        </div>
+
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Sluiten</button>
+                <button type="button" class="btn btn-primary" ng-click="assigntask()">Taak inplannen</button>
+                </div>
+            </div>
+            </form>
+            </div>
+        </div>
+        
+        <!-- Add user modal -->
+        <div class="modal fade" id="addUserModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                <form>
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Lid toevoegen</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">Lid zoeken</label>
+                            <input ng-model="searched_username" type="text" class="form-control" id="exampleFormControlInput1" placeholder="achternaam"><br>
+                            <input class="btn btn-primary pull-right" type="button" value="Zoek" ng-click="searchForUser()">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Resultaten</label>
+                            <select size="3" class="form-control" id="searched_usernames" ng-model="selectedMemberToAdd" ng-options="x.first_name + ' ' + x.last_name for x in retrievedmembers">
+                                <!-- <option ng-repeat="x in retrievedmembers">{{x.first_name}} {{x.last_name}} - ({{x.email}})</option> -->
+                            </select>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Sluiten</button>
+                    <button type="button" class="btn btn-primary" ng-click="addMemberToTask()">Lid toevoegen aan taak</button>
+                    </div>
+                </div>
+                </form>
+                </div>
+            </div>
+    </div>
+    <!-- /#wrapper -->
+    <!-- Bootstrap Core JavaScript -->
+    <script src="bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- Menu Plugin JavaScript -->
+    <script src="../plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.js"></script>
+    <!--slimscroll JavaScript -->
+    <script src="js/jquery.slimscroll.js"></script>
+    <!--Wave Effects -->
+    <script src="js/waves.js"></script>
+    <!-- Custom Theme JavaScript -->
+    <script src="js/custom.js"></script>
+</body>
+</html>

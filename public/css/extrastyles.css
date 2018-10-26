@@ -1,0 +1,19 @@
+/* default states of inputs */
+input.ng-pristine {
+    border: 1px solid #c0c0c0;
+    border-radius: 4px;
+}
+
+/* invalid states of inputs */
+input.ng-invalid-required.ng-dirty {
+    border: 1px solid red;
+    border-radius: 4px;
+}
+input.ng-invalid.ng-dirty {
+    border: 1px solid red;
+    border-radius: 4px;
+}
+input.ng-invalid-minlength.ng-dirty {
+    border: 1px solid red;
+    border-radius: 4px;
+}
