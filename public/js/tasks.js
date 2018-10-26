@@ -29,8 +29,14 @@ app.controller('TareasCtrlTasks', function($scope, $http) {
                     querySnapshot.forEach(function(doc) {
     
                         console.log(doc.id, " => ", doc.data());
-                        let dateTime = doc.data()["deadline"]
-                        var task = {title: doc.data()['title'], description: doc.data()['description'], minpeopleneeded: doc.data()['minpeopleneeded'], deadline: dateTime};
+                        let dateTime = doc.data()["deadline"].toDate()
+                        let year = dateTime.getFullYear()
+                        let month = dateTime.getMonth() + 1
+                        let day = dateTime.getDate()
+                        let hours = dateTime.getHours()
+                        let mins = (dateTime.getMinutes()<10?'0':'') + dateTime.getMinutes()
+
+                        var task = {title: doc.data()['title'], description: doc.data()['description'], minpeopleneeded: doc.data()['minpeopleneeded'], deadline: hours + ":" + mins +  " op " + day + "/" + month + "/" + year};
                         $scope.tasks.push(task);
     
                     });
