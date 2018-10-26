@@ -2,9 +2,13 @@
 # Firebase Based WebModule
 Frameworkds:
 Bootstrap
+
 jQuery
+
 AngularJS
-Firebase JS SDK
+
+FirebaseJS SDK
+
 
 
 ## Emulator starten met de Firebase CLI:
