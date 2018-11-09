@@ -331,12 +331,27 @@ app.controller('TareasCtrlPlanner', ['$scope', "$compile", '$http','$window' ,'$
               membersperformingtask: membersperformingtask
           })
           .then(function() {
-              console.log("Document successfully written!");
-              $('#assignTaskModal').modal('hide');
-              $scope.getPlanning();
+            //After assiging a task to one or more users, the task should be updated to reflect the fact that it is now assigned.
+
+            var taskRef = basedb.collection("clubs").doc(userName).collection("tasks").doc($scope.selectedTask.title);
+
+            taskRef.update({
+                assigned: true
+            })
+            .then(function() {
+                console.log("Document successfully written! (both planning and task)");
+                $('#assignTaskModal').modal('hide');
+                $scope.getPlanning();
+            })
+            .catch(function(error) {
+                // The document probably doesn't exist.
+                console.error("Error updating document (task): ", error);
+            });  
+
+
           })
           .catch(function(error) {
-              console.error("Error writing document: ", error);
+              console.error("Error writing document (planning): ", error);
           });
         
     

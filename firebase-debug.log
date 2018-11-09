@@ -1,0 +1,36 @@
+[debug] [2018-11-09T11:32:34.360Z] ----------------------------------------------------------------------
+[debug] [2018-11-09T11:32:34.363Z] Command:       /usr/local/bin/node /usr/local/bin/firebase serve --only hosting,functions
+[debug] [2018-11-09T11:32:34.363Z] CLI Version:   4.2.1
+[debug] [2018-11-09T11:32:34.363Z] Platform:      darwin
+[debug] [2018-11-09T11:32:34.363Z] Node Version:  v8.11.2
+[debug] [2018-11-09T11:32:34.363Z] Time:          Fri Nov 09 2018 12:32:34 GMT+0100 (CET)
+[debug] [2018-11-09T11:32:34.363Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-11-09T11:32:34.376Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-11-09T11:32:34.376Z] > authorizing via signed-in user
+[debug] [2018-11-09T11:32:34.378Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2018-11-09T11:32:34.378Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+
+[debug] [2018-11-09T11:32:34.593Z] <<< HTTP RESPONSE 200
+[debug] [2018-11-09T11:32:34.611Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/tareas-d98b3  
+ 
+[debug] [2018-11-09T11:32:35.222Z] <<< HTTP RESPONSE 200
+[debug] [2018-11-09T11:32:35.223Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/tareas-d98b3  
+ 
+[debug] [2018-11-09T11:32:36.017Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/Users/michaelg/Dropbox/Tareas/CodeBase/WebModule'...
+[info] 
+[info] i  functions: Preparing to emulate functions.
+[debug] [2018-11-09T11:32:36.728Z] Fetching environment
+[debug] [2018-11-09T11:32:36.730Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/740957850942:getServerAppConfig  
+ 
+[debug] [2018-11-09T11:32:36.731Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/740957850942/clients/_:getWebAppConfig  
+ 
+[debug] [2018-11-09T11:32:36.938Z] <<< HTTP RESPONSE 200
+[debug] [2018-11-09T11:32:36.938Z] Starting @google-cloud/functions-emulator
+[debug] [2018-11-09T11:32:37.026Z] <<< HTTP RESPONSE 200
+[info] i  hosting[tareas-d98b3]: Serving hosting files from: public
+[info] ✔  hosting[tareas-d98b3]: Local server: http://localhost:5000
+[debug] [2018-11-09T11:32:38.481Z] Parsing function triggers
+[info] ✔  functions: app: http://localhost:5001/tareas-d98b3/us-central1/app

@@ -85,7 +85,8 @@ app.controller('TareasCtrlTasks', function($scope, $http) {
                     title: title,
                     description: description,
                     minpeopleneeded: Number(minpeopleneeded),
-                    deadline: deadline
+                    deadline: deadline,
+                    assigned: false
                 })
                 .then(function() {
                     console.log("Document successfully written!");                
@@ -103,7 +104,6 @@ app.controller('TareasCtrlTasks', function($scope, $http) {
             // No user is signed in.
             //TODO: response to no logged in user
             }
-    
         };
     
     
