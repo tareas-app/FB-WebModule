@@ -347,8 +347,6 @@ app.controller('TareasCtrlPlanner', ['$scope', "$compile", '$http','$window' ,'$
                 // The document probably doesn't exist.
                 console.error("Error updating document (task): ", error);
             });  
-
-
           })
           .catch(function(error) {
               console.error("Error writing document (planning): ", error);
