@@ -351,8 +351,7 @@ app.controller('TareasCtrlPlanner', ['$scope', "$compile", '$http','$window' ,'$
           .catch(function(error) {
               console.error("Error writing document (planning): ", error);
           });
-        
-    
+
       }
       else {
           logg('No user to assign task for -> no logged in user');
